@@ -1,0 +1,98 @@
+port: 7890
+
+socks-port: 7891
+
+allow-lan: true
+
+mode: Rule
+
+log-level: info
+
+external-controller: '127.0.0.1:9090'
+
+secret: ""
+
+experimental:
+  ignore-resolve-fail: true
+  # interface-name: en0 # outbound interface name
+
+# dns:
+#   enable: true # 鏄?鍚﹀惎鐢╠ns false
+#   listen: 127.0.0.1:53
+#   enhanced-mode: fake-ip # 妯″紡锛歳edir-host鎴杅ake-ip
+#   nameserver:
+#      - 117.50.11.11  # OneDNS鎷︽埅
+#      - 117.50.10.10  # OneDNS绾?鍑€
+#      - 223.5.5.5 # 闃块噷DNS
+#      - 180.76.76.76 # 鐧惧害DNS
+#      - 119.29.29.29 # 鑵捐?疍NS
+#      - 117.50.10.10 # ONE DNS绾?鍑€鐗?
+#      - 114.114.114.114 # 114DNS
+#   fallback:
+#      - 8.8.8.8 # 璋锋瓕DNS
+#      - 1.1.1.1 # Cloudflare DNS
+#      - tls://dns.rubyfish.cn:853
+# experimental:
+#   interface-name: WLAN # WLAN 涓虹墿鐞嗙綉鍗″悕
+# 浠ｇ悊缁?
+# 涓嬮潰杩?3涓?涓嶈?佸紩鍒拌?㈤槄閲屽幓 瑕佷笉浼氬嚭閿?
+# Will be ignored after profile selection
+Proxy:
+  - name: Shadowsocks
+    type: socks5
+    server: 127.0.0.1
+    port: 1080
+Proxy Group:
+  - name: Proxy
+    type: select
+    proxies:
+      - Shadowsocks
+Rule:
+  - 'MATCH,DIRECT'
+
+# Clash for Windows
+# Proxies module latency test settings
+cfw-latency-timeout: 3000
+cfw-latency-url: http://www.gstatic.com/generate_204
+
+cfw-conn-break-strategy:
+  proxy: chain # none/chain/all
+  profile: true # true/false
+  mode: true # true/false
+
+cfw-bypass:
+  # MyList
+  - "*.ucloud.cn"
+  - "*.ipssh.net"
+  - "*.zhihuishu.com"
+  - "*.17music.club"
+  - "*.yingxiong.com"
+  - "*.zhipin.com"
+  - "*.vlightv.com"
+  - "*.423down.com"
+  - "*.bitwarden.com"
+  - "*.chaipip.com"
+  - "*.hrtsea.com"
+  - "*.laomo.me"
+  - "*.mpyit.com"
+  - "localhost"
+  - 127.*
+  - 10.*
+  - 172.16.*
+  - 172.17.*
+  - 172.18.*
+  - 172.19.*
+  - 172.20.*
+  - 172.21.*
+  - 172.22.*
+  - 172.23.*
+  - 172.24.*
+  - 172.25.*
+  - 172.26.*
+  - 172.27.*
+  - 172.28.*
+  - 172.29.*
+  - 172.30.*
+  - 172.31.*
+  - 192.168.*
+  - <local>
