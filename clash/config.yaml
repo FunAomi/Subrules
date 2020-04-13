@@ -1,42 +1,14 @@
 port: 7890
-
 socks-port: 7891
-
+redir-port: 7892
 allow-lan: true
-
+system-proxy: true
 mode: Rule
-
 log-level: info
-
 external-controller: '127.0.0.1:9090'
-
-secret: ""
-
+secret: ''
 experimental:
   ignore-resolve-fail: true
-  # interface-name: en0 # outbound interface name
-
-# dns:
-#   enable: true # 鏄?鍚﹀惎鐢╠ns false
-#   listen: 127.0.0.1:53
-#   enhanced-mode: fake-ip # 妯″紡锛歳edir-host鎴杅ake-ip
-#   nameserver:
-#      - 117.50.11.11  # OneDNS鎷︽埅
-#      - 117.50.10.10  # OneDNS绾?鍑€
-#      - 223.5.5.5 # 闃块噷DNS
-#      - 180.76.76.76 # 鐧惧害DNS
-#      - 119.29.29.29 # 鑵捐?疍NS
-#      - 117.50.10.10 # ONE DNS绾?鍑€鐗?
-#      - 114.114.114.114 # 114DNS
-#   fallback:
-#      - 8.8.8.8 # 璋锋瓕DNS
-#      - 1.1.1.1 # Cloudflare DNS
-#      - tls://dns.rubyfish.cn:853
-# experimental:
-#   interface-name: WLAN # WLAN 涓虹墿鐞嗙綉鍗″悕
-# 浠ｇ悊缁?
-# 涓嬮潰杩?3涓?涓嶈?佸紩鍒拌?㈤槄閲屽幓 瑕佷笉浼氬嚭閿?
-# Will be ignored after profile selection
 Proxy:
   - name: Shadowsocks
     type: socks5
@@ -49,12 +21,8 @@ Proxy Group:
       - Shadowsocks
 Rule:
   - 'MATCH,DIRECT'
-
-# Clash for Windows
-# Proxies module latency test settings
 cfw-latency-timeout: 3000
 cfw-latency-url: http://www.gstatic.com/generate_204
-
 cfw-conn-break-strategy:
   proxy: chain # none/chain/all
   profile: true # true/false
@@ -62,6 +30,11 @@ cfw-conn-break-strategy:
 
 cfw-bypass:
   # MyList
+  - "*.whales.monster"
+  - "*.qzone.qq.com"
+  - "*.cn"
+  - "*.i7code.cn"
+  - "*.lanzous.com"
   - "*.ucloud.cn"
   - "*.ipssh.net"
   - "*.zhihuishu.com"
